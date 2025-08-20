@@ -308,18 +308,19 @@
                     let count = 0;
                     const current = new Date(startDate);
                     current.setHours(0, 0, 0, 0);
-                    
+
                     const end = new Date(endDate);
                     end.setHours(0, 0, 0, 0);
-                    
-                    while (current < end) {
+
+                    // Include the target date when counting business days
+                    while (current <= end) {
                         const dayOfWeek = current.getDay();
                         if (dayOfWeek >= 1 && dayOfWeek <= 5) {
                             count++;
                         }
                         current.setDate(current.getDate() + 1);
                     }
-                    
+
                     return count;
                 }
 
